@@ -6,7 +6,7 @@ import time
 
 def noizo_1D(x, t):
     u = ((u2 - u1) / l) * x + u1
-    for n in range(1, 150):
+    for n in range(1, 50):
         u += ((2 / np.pi) / n) * (u0 - u1 + ((-1) ** n) * (u2 - u0)) * (np.e ** (-((np.pi * n * a / l) ** 2) * t)) * (np.sin(np.pi * n * x / l))
     return u
 
@@ -50,7 +50,7 @@ u = izo_1D(x, t)
 fig = plt.figure()
 ax = fig.add_subplot(121, projection='3d')
 ax.plot_surface(x, t, u, cmap="inferno")
-plt.title(label='Численное решение')
+plt.title(label='Численное решение', fontsize=17)
 plt.xlabel('Координата стержня', fontsize=12)
 plt.ylabel('Время', fontsize=12)
 ax.set_zlabel('Температура')
@@ -62,7 +62,7 @@ start_time = time.time()
 u = noizo_1D(x, t)
 ax = fig.add_subplot(122, projection='3d')
 ax.plot_surface(x, t, u, cmap="inferno")
-plt.title(label='Общее решение')
+plt.title(label='Точное решение', fontsize=17)
 plt.xlabel('Координата стержня', fontsize=12)
 plt.ylabel('Время', fontsize=12)
 ax.set_zlabel('Температура')

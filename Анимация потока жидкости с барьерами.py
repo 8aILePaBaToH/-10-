@@ -1,3 +1,4 @@
+# Ссылка на опорную статью -> https://physics.weber.edu/schroeder/javacourse/LatticeBoltzmann.pdf
 import numpy, matplotlib.pyplot, matplotlib.animation, PIL
 
 # Параметры симуляции
@@ -20,7 +21,7 @@ nSE = k1to36 * (numpy.ones((height,width)) + 3*u0 + 4.5*u0**2 - 1.5*u0**2)
 nNW = k1to36 * (numpy.ones((height,width)) - 3*u0 + 4.5*u0**2 - 1.5*u0**2)
 nSW = k1to36 * (numpy.ones((height,width)) - 3*u0 + 4.5*u0**2 - 1.5*u0**2)
 rho = n0 + nN + nS + nE + nW + nNE + nSE + nNW + nSW		# плотность
-ux = (nE + nNE + nSE - nW - nNW - nSW) / rho			# скорости по осям
+ux = (nE + nNE + nSE - nW - nNW - nSW) / rho
 uy = (nN + nNE + nNW - nS - nSE - nSW) / rho
 
 # Обозначаем барьеры
@@ -51,7 +52,6 @@ def stream():
 	nW  = numpy.roll(nW,  -1, axis=1)
 	nNW = numpy.roll(nNW, -1, axis=1)
 	nSW = numpy.roll(nSW, -1, axis=1)
-	# Маркеры столкновения с барьерами
 	nN[barrierN] = nS[barrier]
 	nS[barrierS] = nN[barrier]
 	nE[barrierE] = nW[barrier]
@@ -116,7 +116,7 @@ def nextFrame(frame):					# Тело анимации (аргумент не н�
 
 animate = matplotlib.animation.FuncAnimation(theFig, nextFrame, interval=0.5, blit=True)
 matplotlib.pyplot.show()
-# animate.save('Abobus.gif', fps=60)                    # Можно сохранить результат в формате .gif
+# animate.save('Anibobus.gif', fps=60)                    # Можно сохранить результат в формате .gif
 
 
 
